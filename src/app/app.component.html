@@ -1,1 +1,38 @@
-<div id="root"></div>
+
+<div id="root">
+    <div>
+        <p class="title">My Pokédex :3</p>
+    </div>
+    <div class="box-search">
+      <app-card-search (onSearch)="searchCard($event)"></app-card-search>
+    </div>
+    <div class="container" id="scoll-bar">
+        <div class="row">
+          <div *ngFor="let data of filterCards" class="box">
+            
+            <div>
+              <img [src]="data.imageUrl" class="img-card" width="150px">
+            </div>
+            <div class="content">
+              <p class="name">{{data.name}}</p>
+              <p class="text">convertedRetreatCost: {{data.convertedRetreatCost}}</p>
+              <p class="text">number: {{data.number}}</p>
+              <p class="text">artist: {{data.artist}}</p>
+              <p class="text">rarity: {{data.rarity}}</p>
+              <p class="text">series: {{data.series}}</p>
+              <p class="text">set: {{data.set}}</p>
+              <p class="text">setCode: {{data.setCode}}</p>
+              <p class="btn-flex">
+                <button class="btn">
+                  รายละเอียด
+                </button>
+              </p>
+            </div>
+
+            <!-- <p>{{data.ability?.text}}</p>  -->
+        </div>
+      </div>
+    </div>
+</div>
+
+
