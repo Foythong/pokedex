@@ -4,12 +4,27 @@
         <p class="title">My Pokédex :3</p>
     </div>
     <div class="box-search">
-      <app-card-search (onSearch)="searchCard($event)"></app-card-search>
+      <app-card-modal></app-card-modal>
     </div>
-    <div class="container" id="scoll-bar">
+      <app-show-card></app-show-card>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <div class="box-search">
+      <app-card-search (onSearch)="searchCard($event)"></app-card-search>
+    </div> -->
+    <!-- <div class="container" id="scoll-bar">
         <div class="row">
           <div *ngFor="let data of filterCards" class="box">
-            
+
             <div>
               <img [src]="data.imageUrl" class="img-card" width="150px">
             </div>
@@ -24,15 +39,14 @@
               <p class="text">setCode: {{data.setCode}}</p>
               <p class="btn-flex">
                 <button class="btn">
-                  รายละเอียด
+                  add
                 </button>
               </p>
             </div>
 
-            <!-- <p>{{data.ability?.text}}</p>  -->
         </div>
       </div>
-    </div>
+    </div> -->
 </div>
 
 

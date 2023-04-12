@@ -1,4 +1,8 @@
 
+<div class="card flex flex-wrap justify-content-center gap-3">
+    <span class="p-input-icon-left">
+        <i class="pi pi-search"></i>
+        <input type="text" pInputText #inputText (input)="inputSearch(inputText.value)" placeholder="ค้นหาการ์ด"/>
+    </span>
 
-<input type="text" pInputText placeholder="ค้นหาการ์ด" #inputText (input)="inputSearch(inputText.value)" />
- 
+</div>

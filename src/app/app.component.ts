@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RestService } from './rest.service';
-import { Cards } from './Cards';
+// import { RestService } from './rest.service';
+// import { Cards } from './Cards';
 
 
 const COLORS = {
@@ -22,34 +22,8 @@ const COLORS = {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
 
 
-  constructor(private rs: RestService) { }
-
-
-  cards: Cards[] = [];
-
-  filterCards : Cards[] = this.cards;
-  ngOnInit(): void {
-    this.rs.getCards().subscribe
-      (
-        (response) => {
-          this.cards  = response;
-        },
-        (error) => {
-          console.log("Error Occured : " + error);
-        }
-      )  
-  }
-
-  searchCard(text:string){
-    // console.log("d",text);  
-    this.filterCards  = this.cards.filter(key=>{
-      const name = key.name.toLowerCase();
-      const searchName = text.toLowerCase();
-      return name.indexOf(searchName) !== -1;
-    })    
-  }
 
 }
