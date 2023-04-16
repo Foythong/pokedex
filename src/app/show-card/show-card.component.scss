@@ -1,0 +1,159 @@
+.card {
+  border: none;
+}
+
+.box {
+  font-size: 16px;
+  font-weight: bold;
+  background: #f3f4f7;
+  box-shadow: 5px 10px #d5d6dc;
+  height: 280px;
+  display: flex;
+  flex: wrap;
+  padding: 10px 20px 0 0;
+  margin: 0.5rem;
+  z-index: 0;
+  position: relative;
+}
+
+.flex-row {
+  display: flex;
+  flex: 1 1 50px;
+  gap: 1rem;
+}
+
+.del {
+  color: #1a70f3;
+  position: absolute;
+  right: 35px;
+  top: 15px;
+  font-size: 25px;
+  cursor: pointer;
+  display: none;
+}
+
+.del:hover {
+  display: block;
+}
+
+.card-body:hover .del {
+  display: block;
+}
+
+
+
+.hp {
+  background-color: #1a70f3;
+  height: 25px;
+  border-radius: 20px;
+  position: absolute;
+  margin-right: 20px;
+  z-index: 2;
+  width: 150px;
+}
+
+.hp-1 {
+  background-color: #e4e4e4;
+  height: 25px;
+  border-radius: 20px;
+  position: relative;
+  z-index: 1;
+  width: 150px;
+  top: -23px;
+  left: 40px;
+}
+
+.hp-2 {
+  background-color: #1a70f3;
+  height: 25px;
+  border-radius: 20px;
+  position: absolute;
+  margin-right: 20px;
+  z-index: 2;
+}
+
+.str-top {
+  position: relative;
+  top: -30px;
+}
+
+.str {
+  background-color: #1a70f3;
+  height: 25px;
+  border-radius: 20px;
+  position: absolute;
+  width: 150px;
+  margin-right: 20px;
+  z-index: 3;
+  top: 0;
+  left: 0;
+}
+
+.str-1 {
+  background-color: #e4e4e4;
+  height: 25px;
+  border-radius: 20px;
+  position: relative;
+  width: 150px;
+  margin-right: 20px;
+  z-index: 2;
+  top: -20px;
+  left: 40px;
+}
+
+.str-2 {
+  background-color: #1a70f3;
+  height: 25px;
+  border-radius: 20px;
+  position: absolute;
+  width: 75px;
+  margin-right: 20px;
+  z-index: 3;
+  top: 0;
+  left: 0;
+}
+
+.weak-top {
+  position: relative;
+  top: -40px;
+}
+.weak-1 {
+  width: 150px;
+  background-color: #e4e4e4;
+  height: 25px;
+  border-radius: 20px;
+  position: relative;
+  z-index: 2;
+  left: 40px;
+  top: -24px;
+}
+
+.weak-2 {
+  width: 75px;
+  background-color: #1a70f3;
+  height: 25px;
+  border-radius: 20px;
+  z-index: 3;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.weak-3 {
+  width: 150px;
+  background-color: #1a70f3;
+  height: 25px;
+  border-radius: 20px;
+  z-index: 3;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.damage-top {
+  position: relative;
+  top: -50px;
+  display: inline-flex;
+}
+
+

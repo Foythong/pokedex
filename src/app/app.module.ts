@@ -14,7 +14,6 @@ import { ShowCardComponent } from './show-card/show-card.component';
 
 
 
-
 @NgModule({
   declarations: [
     AppComponent,

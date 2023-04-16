@@ -1,3 +1,254 @@
+<footer class="footer">
+  <!-- Button trigger modal -->
+  <button type="button" id="btn-add" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <span class="add">+</span>
+
+  </button>
+
+  <!-- Modal -->
+  <div class="d-flex justify-content-center">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable">
+
+        <div class="modal-content" style="width:50rem;margin-left: -172px;position:relative">
+
+          <app-card-search (onSearch)="searchCard($event)"></app-card-search>
+
+          <div class="modal-body">
+            <div *ngIf="filterCards.length > 0; elseCards">
+              <div *ngFor="let data of filterCards">
+                <div class="card mb-3">
+                  <div class="card-body bgcard">
+                    <div class="row g-3">
+                      <div class="col-3">
+                        <img [src]="data.imageUrl" width="150px" class="img-card">
+                      </div>
+
+                      <div class="col-7">
+                        <p>{{data.name}}</p>
+
+                        <div *ngIf="data.hp < 100;">
+                          <span>
+                            hp
+                            <div class="hp-1">
+                              <div class="hp-2" [ngStyle]="{'width': getHp(data.hp) + 'px'}">
+                              </div>
+                            </div>
+                          </span>
+                        </div>
+
+                        <div *ngIf="data.hp >= 100">
+                          <span>
+                            hp
+                            <div class="hp-1">
+                              <div class="hp"
+                              style="width:300px;background:#1a70f3 ;height:25px;margin-bottom:10px;border-radius:20px;">
+                            </div>
+                            </div>
+                          </span>
+                        </div>
+
+                        <div *ngIf="data.hp == 'None'">
+                          <span>
+                            hp
+                            <div class="hp-1">
+                              <div class="hp-3">
+                              </div>
+                            </div>
+                          </span>
+                        </div>
+
+
+
+                        <div *ngIf="data && data.attacks && data.attacks.length * 50 === 50" style="margin-top: 10px;">
+                          <span>
+                            str
+                            <div class="str-1">
+                              <div class="str-2"></div>
+                            </div>
+                          </span>
+                        </div>
+
+                        <div *ngIf="data && data.attacks && data.attacks.length * 50 === 100" style="margin-top: 10px;">
+                          <span>
+                            str
+                            <div class="str-1">
+                              <div class="str-0">
+                              </div>
+                            </div>
+                          </span>
+                        </div>
+
+                        <div *ngIf="data && !data.attacks" style="margin-top: 10px;">
+                          <span>
+                            str
+                            <div class="str-1">
+                            </div>
+                          </span>
+                        </div>
+
+
+                        <div *ngIf="data && data.weaknesses && data.weaknesses.length * 100 >= 100" style="margin-top:10px">
+                          <span >
+                            weak
+                          </span>
+                            <div class="weak-1">
+                              <div class="weak-2"></div>
+                            </div>
+                        </div>
+
+                        <div *ngIf="data && !data.weaknesses" style="margin-top:10px">
+                          <span >
+                            weak
+                            <div class="weak-1">
+                            </div>
+                          </span>
+                        </div>
+
+
+                        <div class="damage-top">
+                          <span style="margin-right:20px;margin-bottom:20px;">Damage</span>
+                          <div [innerHTML]="getDamage(getDamageArr(data.attacks))">
+                          </div>
+                        </div>
+
+
+
+                        <div [innerHTML]="getEmotion(data.hp, getDamageArr(data.attacks), data.weaknesses?.length)" style="margin-top: 20px;"></div>
+                     </div>
+                    <div class="col-2 card-content">
+                      <p class="text-add" (click)="addCard(data)">add</p>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div #elseCards>
+              <div *ngFor="let data of cards">
+                <div class="card mb-3">
+                  <div class="card-body bgcard">
+                    <div class="row g-3">
+                      <div class="col-3">
+                        <img [src]="data.imageUrl" width="150px" class="img-card">
+                      </div>
+
+                      <div class="col-7">
+                        <p>{{data.name}}</p>
+
+                        <div *ngIf="data.hp < 100;">
+                          <span>
+                            hp
+                            <div class="hp-1">
+                              <div class="hp-2" [ngStyle]="{'width': getHp(data.hp) + 'px'}">
+                              </div>
+                            </div>
+                          </span>
+                        </div>
+
+                        <div *ngIf="data.hp >= 100">
+                          <span>
+                            hp
+                            <div class="hp-1">
+                              <div class="hp">
+                            </div>
+                            </div>
+                          </span>
+                        </div>
+
+                        <div *ngIf="data.hp == 'None'">
+                          <span>
+                            hp
+                            <div class="hp-1">
+                              <div class="hp-3">
+                              </div>
+                            </div>
+                          </span>
+                        </div>
+
+
+
+
+                        <div *ngIf="data && data.attacks && data.attacks.length * 50 === 50" style="margin-top: 10px;">
+                          <span>
+                            str
+                            <div class="str-1">
+                              <div class="str-2"></div>
+                            </div>
+                          </span>
+                        </div>
+
+                        <div *ngIf="data && data.attacks && data.attacks.length * 50 === 100" style="margin-top: 10px;">
+                          <span>
+                            str
+                            <div class="str-1">
+                              <div class="str-0">
+                              </div>
+                            </div>
+                          </span>
+                        </div>
+
+                        <div *ngIf="data && !data.attacks" style="margin-top: 10px;">
+                          <span>
+                            str
+                            <div class="str-1">
+                            </div>
+                          </span>
+                        </div>
+
+
+                        <div *ngIf="data && data.weaknesses && data.weaknesses.length * 100 >= 100" style="margin-top:10px">
+                          <span >
+                            weak
+                          </span>
+                            <div class="weak-1">
+                              <div class="weak-2"></div>
+                            </div>
+                        </div>
+
+                        <div *ngIf="data && !data.weaknesses" style="margin-top:10px">
+                          <span >
+                            weak
+                            <div class="weak-1">
+                            </div>
+                          </span>
+                        </div>
+
+
+
+                        <div class="damage-top">
+                          <span style="margin-right:20px;margin-bottom:20px;">Damage</span>
+                          <div [innerHTML]="getDamage(getDamageArr(data.attacks))">
+                          </div>
+                        </div>
+
+
+
+                        <div [innerHTML]="getEmotion(data.hp, getDamageArr(data.attacks), data.weaknesses?.length)" style="margin-top: 20px;"></div>
+                     </div>
+                    <div class="col-2 card-content">
+                      <p class="text-add" (click)="addCard(data)">add</p>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</footer>
+
+
+
+
+
+<!--
 <div class="card flex justify-content-center">
 
   <p-button (click)="showDialog()" icon="pi pi-external-link" label="Cards"></p-button>
@@ -235,4 +486,4 @@
 
 
   </p-dialog>
-</div>
+</div> -->

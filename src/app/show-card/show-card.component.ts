@@ -69,8 +69,14 @@ export class ShowCardComponent {
   getHp(hp:any){
     if(hp === null){
       return 0;
+
     }
-    return (hp*300)/100;
+    return (hp*150)/100;
   }
+
+
+
+
+
 
 }

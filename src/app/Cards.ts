@@ -2,7 +2,7 @@ export interface Cards {
   id: string
   name: string
   imageUrl: string
-  hp: number
+  hp: any
   attacks?: Attack[]
   weaknesses?: Weakness[]
   type: string

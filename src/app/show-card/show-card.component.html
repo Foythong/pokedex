@@ -1,106 +1,125 @@
-<div>
+<div class="container-show" id="scoll-bar">
+  <div *ngFor="let data of cardsStore;let i = index">
+    <div class="card box">
+      <div class="card-body" style="width: 360px;">
+        <div class="flex-row">
+          <div class="img-card">
+            <img [src]="data.imageUrl" class="img-card" width="150px">
+          </div>
 
-   <div class="container-show" id="scoll-bar">
-        <div class="row">
-          <div *ngFor="let data of cardsStore;let i = index" class="box">
-            <div>
-              <img [src]="data.imageUrl" class="img-card" width="150px">
+          <div class="content">
+            <div class="text">
+              <p>{{data.name}}</p>
             </div>
-            <div class="content">
-              <p class="name">{{data.name}}</p>
 
-              <div *ngIf="data.hp < 100" style="display: flex;">
-                <div style="margin-right:33px;">
+
+
+            <div *ngIf="data.hp < 100;" style="margin-bottom: 15px;">
+
+                <span>
                   hp
-                </div>
-                <div [ngStyle]="{'width': data.hp + 'px', 'background-color': '#4FCFFC  ', 'height': '20px', 'margin-bottom': '10px'}">
-                  <span style="padding-left: .5rem;">{{data.hp}}</span>
-                </div>
-                </div>
-
-                <div *ngIf="data.hp >= 100" style="display: flex;">
-                  <div style="margin-right:33px;">
-                    hp
+                  <div class="hp-1">
+                    <div class="hp-2" [ngStyle]="{'width': getHp(data.hp) + 'px'}">
+                    </div>
                   </div>
-                <div class="hp" style="width:300px;background:#54e1eb  ;height:20px;margin-bottom:10px;">
-                  <span style="padding-left: .5rem;">{{data.hp}}</span>
-                </div>
-                </div>
+                </span>
 
-                <div *ngIf="data.hp === null" style="display: flex;">
-                  <div style="margin-right:28px;">
-                    hp
-                  </div>
-                <div class="hp">
-                  <span style="padding-left: .5rem;">0</span>
-                </div>
-                </div>
-
-                  <div *ngIf="data && data.attacks && data.attacks.length * 50 === 50" style="display: flex;">
-                    <div style="margin-right:30px;">
-                     str
-                    </div>
-                    <div [ngStyle]="{'width':'150px', 'background-color': '#fd6135 ', 'height': '20px', 'margin-bottom': '10px'}">
-                      <span style="padding-left: .5rem;"> 50%</span>
-                    </div>
-                    </div>
-
-                    <div *ngIf="data && data.attacks && data.attacks.length * 50 === 100" style="display: flex;">
-                      <div style="margin-right:30px;">
-                        str
-                      </div>
-                      <div  style="width:300px;background:#fd6135 ;height:20px;margin-bottom:10px;">
-                      <span style="padding-left: .5rem;"> 100%</span>
-                    </div>
-                    </div>
-
-                    <div *ngIf="data && data.attacks && data.attacks.length  === null" style="display: flex;">
-                      <div style="margin-right:28px;">
-                        str
-                      </div>
-                    <div class="hp">
-                      <span style="padding-left: .5rem;">0</span>
-                    </div>
-                    </div>
-
-                  <div *ngIf="data && data.weaknesses && data.weaknesses.length * 100 === 100" style="display: flex;">
-                    <div style="margin-right:18px;">
-                      weak
-                    </div>
-                    <div [ngStyle]="{'width':'150px', 'background-color': '#fd35d2  ', 'height': '20px', 'margin-bottom': '10px'}">
-                      <span style="padding-left: .5rem;"> 50%</span>
-                    </div>
-                    </div>
-
-                    <div *ngIf="data && data.weaknesses && data.weaknesses.length === null" style="display: flex;">
-                      <div style="margin-right:18px;">
-                        weak
-                      </div>
-                      <div  style="width:300px;background:#fd35d2 ;height:20px;margin-bottom:10px;">
-                      <span style="padding-left: .5rem;"> 0%</span>
-                    </div>
-                    </div>
-
-
-                    <div class="" style="display:flex; ">
-                      <span style="margin-right:20px;margin-bottom:20px;">Damage</span> <div [innerHTML]="getDamage(getDamageArr(data.attacks))">
-                      </div>
-                    </div>
-
-
-
-                <div [innerHTML]="getEmotion(data.hp, getDamageArr(data.attacks), data.weaknesses?.length)">
-
-              </div>
-
-
-              <p class="btn-flex">
-                <button class="btn" (click)="delCard(i)">
-                  delete
-                </button>
-              </p>
             </div>
+
+            <div *ngIf="data.hp >= 100;" style="margin-bottom: 15px;">
+              <span>
+                hp
+                <div class="hp-1">
+                  <div class="hp">
+                  </div>
+                </div>
+              </span>
+            </div>
+
+            <div *ngIf="data.hp == 'None'" style="margin-bottom: 15px;">
+              <span>
+                hp
+                <div class="hp-1"></div>
+              </span>
+            </div>
+
+
+
+            <div *ngIf="data && data.attacks && data.attacks.length * 50 === 50" class="str-top">
+
+                <span>
+                  str
+                  <div class="str-1">
+                    <div class="str-2"></div>
+                  </div>
+                </span>
+
+            </div>
+
+            <div *ngIf="data && data.attacks && data.attacks.length * 50 === 100" class="str-top">
+              <span>
+                str
+                <div class="str-1">
+                  <div class="str"></div>
+                </div>
+              </span>
+            </div>
+
+            <div *ngIf="data && !data.attacks" class="str-top">
+              <span>
+                str
+                <div class="str-1">
+                </div>
+              </span>
+            </div>
+
+            <div *ngIf="data && data.weaknesses && data.weaknesses.length * 100 == 100" class="weak-top">
+              <span>
+                weak
+                <div class="weak-1">
+                  <div class="weak-2"></div>
+                </div>
+              </span>
+            </div>
+
+
+            <div *ngIf="data && data.weaknesses && data.weaknesses.length * 100 > 100" class="weak-top">
+              <span>
+                weak
+                <div class="weak-1">
+                  <div class="weak-3"></div>
+                </div>
+              </span>
+            </div>
+
+            <div *ngIf="data && !data.weaknesses" class="weak-top">
+              <span>
+                weak
+                <div class="weak-1">
+                </div>
+              </span>
+            </div>
+
+
+            <div class="damage-top">
+              <span style="margin-right:20px;margin-bottom:20px;">Damage</span>
+              <div [innerHTML]="getDamage(getDamageArr(data.attacks))">
+              </div>
+            </div>
+
+
+
+            <div [innerHTML]="getEmotion(data.hp, getDamageArr(data.attacks), data.weaknesses?.length)" style="position: relative;
+              top: -60px;">
+
+            </div>
+
+          </div>
+
+            <p class="del" (click)="delCard(i)">X</p>
+
         </div>
       </div>
-
+    </div>
+  </div>
 </div>

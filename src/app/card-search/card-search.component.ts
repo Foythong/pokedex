@@ -2,8 +2,6 @@ import { debounceTime } from 'rxjs';
 import { Component, EventEmitter, Output, Input } from '@angular/core';
 
 
-
-
 @Component({
   selector: 'app-card-search',
   templateUrl: './card-search.component.html',
